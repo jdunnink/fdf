@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/19 12:32:01 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/06/19 12:42:25 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/06/19 12:32:01 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/16 17:31:33 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,12 @@ typedef	struct	s_object
 {
 	t_win		*win;
 	t_img		*img;
-
 	t_list		*input;
 	t_list		*centre;
 	t_list		*scale;
-
 	t_minmax	*coor_range;
-
 	t_list		*z_grid;
 	t_list		*x_grid;
-
 	unsigned	x_count;
 	unsigned	z_count;
 	unsigned	total_vectors;
@@ -128,7 +124,7 @@ int				is_alt_nbr(char *str);
 char			*extract_nbr(char *str);
 void			print_vectors(t_list *vectors);
 void			free_object(t_object **target);
-void			free_vectors(t_list **vectors);
+void			free_vectors(t_list **vectors, int mode);
 void			ft_lstappend(t_list **list, void *content, size_t size);
 void			print_obj_stat(t_object **target);
 void			set_coor_range(t_object **target);
@@ -136,5 +132,11 @@ void			add_colors(t_list *vectors, t_minmax *coor_range);
 void			init_win(int x, int y, t_win **win, char *name);
 void			init_img(t_img **img, t_win *window, int width, int height);
 t_list			*copy_vector(t_list *elem);
+void			center_vectors(t_list *vectors, t_minmax *coor_range);
+void			scale_vectors(t_list *vectors);
+void			set_x_grid(t_object *obj);
+void			set_z_grid(t_object *obj);
+void			update_coor_range(t_list *vectors, t_minmax *coor_range);
+t_list			*merge_sort_list(t_list *vectors);
 
 #endif

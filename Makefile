@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/03/20 09:33:47 by jdunnink      #+#    #+#                  #
-#    Updated: 2019/05/04 14:33:06 by jdunnink      ########   odam.nl          #
+#    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
+#    Updated: 2019/07/16 17:32:15 by jdunnink      ########   odam.nl          #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 SRC =	main.c				\
 		error.c				\
@@ -23,8 +23,14 @@ SRC =	main.c				\
 		ft_lstappend.c		\
 		print_obj_stat.c	\
 		set_coor_range.c	\
+		update_coor_range.c	\
 		add_colors.c		\
 		copy_vector.c		\
+		center_vectors.c	\
+		scale_vectors.c		\
+		set_x_grid.c		\
+		set_z_grid.c		\
+		merge_sort_list.c	\
 		
 OBJ = $(SRC:.c=.o)
 

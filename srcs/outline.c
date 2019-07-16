@@ -1,15 +1,15 @@
 
 
 
-/////////////////////////////	// stage 1 --> reading and processing input
-/////////////////////////////	//		input --> first argument passed --> input file
-/////////////////////////////	//		initate main object struct
-//////////////////////////////	//		output --> linked list of vectors, max-min coordinates for x,y,z, linesize, dimensions (x_count * z_count = total_vectors)
-//////////////////////////////	//		linesize can be used as an offset. --> an x and z mask the vector list. 
+	// stage 1 --> reading and processing input
+	//		input --> first argument passed --> input file
+	//		initate main object struct
+	//		output --> linked list of vectors, max-min coordinates for x,y,z, linesize, dimensions (x_count * z_count = total_vectors)
+	//		linesize can be used as an offset. --> an x and z mask the vector list. 
 
 	// intermediate memory and performance check
 
-////////////////////////////////	//	if (stage 1 == success) --> stage 2
+	//	if (stage 1 == success) --> stage 2
 	//		initiate window and image
 	//		centre and copy original vectors list
 	//		scale and copy original centered vector list

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 19:33:42 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/15 19:33:42 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/15 19:33:42 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/16 17:42:58 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	set_coor_range(t_object **target)
 	if (obj->coor_range == NULL)
 		error(6);
 	obj->coor_range->x_min = 0;
-	obj->coor_range->x_max = obj->x_count;
+	obj->coor_range->x_max = obj->x_count - 1;
 	obj->coor_range->z_min = 0;
-	obj->coor_range->z_max = obj->z_count;
+	obj->coor_range->z_max = obj->z_count - 1;
 	get_y_range(obj);
 }

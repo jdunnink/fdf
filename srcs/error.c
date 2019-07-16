@@ -26,5 +26,7 @@ void	error(int error_code)
 		ft_putendl("Could not allocate memory for new vector.");
 	else if (error_code == 6)
 		ft_putendl("Could not allocate memory for new coor_range struct.");
+	else if (error_code == 7)
+		ft_putendl("Could not allocate new list node, while setting grid referrals.\n");
 	exit (0);
 }

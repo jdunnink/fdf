@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 15:45:20 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/15 15:45:21 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/16 17:43:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static	void	process_line(char *l, unsigned l_nb, t_object *obj)
 		i++;
 	}
 	if (obj->x_count == 0)
-		obj->x_count = i - 1;
+		obj->x_count = i;
 	free(nums);
 }
 
@@ -77,7 +77,7 @@ static	void	get_vectors(char *input_file, t_object *obj)
 		i++;
 	}
 	if (obj->z_count == 0)
-		obj->z_count = i - 2;
+		obj->z_count = i - 1;
 }
 
 void	read_input(char *input_file, t_object **obj)

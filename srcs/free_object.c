@@ -59,17 +59,17 @@ void	free_object(t_object **target)
 	if (obj->win != NULL)
 		free_win(&(obj->win));
 	if (obj->input != NULL)
-		free_vectors(&(obj->input));
+		free_vectors(&(obj->input), 1);
 	if (obj->centre != NULL)
-		free_vectors(&(obj->centre));
+		free_vectors(&(obj->centre), 1);
 	if (obj->scale != NULL)
-		free_vectors(&(obj->scale));
+		free_vectors(&(obj->scale), 1);
 	if (obj->coor_range != NULL)
 		free_minmax(&(obj->coor_range));
 	if (obj->z_grid != NULL)
-		free_vectors(&(obj->z_grid));
+		free_vectors(&(obj->z_grid), 2);
 	if (obj->x_grid != NULL)
-		free_vectors(&(obj->x_grid));
+		free_vectors(&(obj->x_grid), 2);
 	obj->x_count = 0;
 	obj->z_count = 0;
 	obj->total_vectors = 0;

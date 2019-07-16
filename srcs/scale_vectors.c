@@ -1,41 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_vectors.c                                    :+:    :+:            */
+/*   scale_into_view.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 17:15:57 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 17:40:09 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/04 12:15:04 by jdunnink      #+#    #+#                 */
+/*   Updated: 2019/07/04 12:18:21 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	void	print(t_vec *curr)
-{
-	ft_putnbr((int)curr->x);
-	ft_putstr(" ,");
-	ft_putnbr((int)curr->y);
-	ft_putstr(" ,");
-	ft_putnbr((int)curr->z);
-	ft_putchar('\n');
-}
+/*
+**	scale_into_view() is used to scale objects to the middle of the img.
+*/
 
-void	print_vectors(t_list *vectors)
+static	void	zoom_vectors(t_list *vectors)
 {
 	t_list	*iter;
 	t_vec	*curr;
-	unsigned int i;
 
-	i = 0;
 	iter = vectors;
-	while (iter != NULL)
+	while (iter)
 	{
 		curr = iter->content;
-		print(curr);
+		curr->x *= 30.50;
+		curr->y *= 24.50;
+		curr->z *= 30.50;
 		iter = iter->next;
-		i++;
 	}
-	printf("total vectors printed: %u\n", i);
+}
+
+static	void	move_vectors(t_list *vectors)
+{
+	t_list	*iter;
+	t_vec	*curr;
+
+	iter = vectors;
+	while (iter)
+	{
+		curr = iter->content;
+		curr->x += 25;
+		curr->y += 25;
+		curr->z += 25;
+		iter = iter->next;
+	}
+}
+
+void			scale_vectors(t_list *vectors)
+{
+	move_vectors(vectors);
+	zoom_vectors(vectors);
 }

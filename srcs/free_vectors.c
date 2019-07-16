@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	free_vectors(t_list **vectors)
+void	free_vectors(t_list **vectors, int mode)
 {
 	t_list	*iter;
 	t_list	*trail;
@@ -23,7 +23,8 @@ void	free_vectors(t_list **vectors)
 	while (iter)
 	{
 		curr = iter->content;
-		free(curr);
+		if (mode == 1)
+			free(curr);
 		iter = iter->next;
 		free(trail);
 		trail = iter;
