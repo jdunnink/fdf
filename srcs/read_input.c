@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 17:43:17 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 12:16:01 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ static	void	push_vector(int x, int y, int z, t_object *obj)
 {
 	t_vec *vector;
 
-//	printf("	pushing vector: %i, %i, %i\n", x, y, z);
+	printf("	pushing vector: %i, %i, %i\n", x, y, z);
 
 	vector = (t_vec*)malloc(sizeof(t_vec));
+
 	if (!vector)
 		error(5);
 	vector->x = (float)x;
-	vector->y = (float)y;
+	vector->y = (float)y * -1;
 	vector->z = (float)z;
 	vector->color = 0;
 	ft_lstappend(&(obj->input), vector, sizeof(t_vec));
@@ -41,7 +42,7 @@ static	void	process_line(char *l, unsigned l_nb, t_object *obj)
 		if (is_valid_nbr(nums[i]) == 1)
 			push_vector(i, ft_atoi(nums[i]), l_nb, obj);
 		else if(is_alt_nbr(nums[i]) == 1)
-			push_vector(i, ft_atoi(extract_nbr(nums[i])), l_nb, obj);
+			push_vector(i, extract_nbr(nums[i]), l_nb, obj);
 		else
 			error(4);
 		free(nums[i]);

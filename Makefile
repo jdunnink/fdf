@@ -6,7 +6,7 @@
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
-#    Updated: 2019/07/16 17:32:15 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/07/17 09:51:31 by jdunnink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,13 @@ SRC =	main.c				\
 		set_x_grid.c		\
 		set_z_grid.c		\
 		merge_sort_list.c	\
+		draw_line.c			\
+		draw_grid.c			\
+		draw_object.c		\
+		img_pixel_put.c		\
+		get_color.c			\
+		add_interface.c		\
+		key_release.c		\
 		
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:12:07 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 20:55:34 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 11:43:26 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	read_input(argv[1], &obj);
 
 //	printf("printing input vector list..\n");	
-//	print_vectors(obj->input);
+//	print_vectors(obj->input, 1);
 
 	//----------------------------------------------------STAGE 2--------------------------------------------------------------
 	
@@ -44,13 +44,13 @@ int main(int argc, char **argv)
 	center_vectors(obj->centre, obj->coor_range);
 
 //	printf("printing centre vector list..\n");	
-//	print_vectors(obj->centre);
+//	print_vectors(obj->centre, 1);
 
 	printf("Copying centre vector list to scale...\n");
 	obj->scale = ft_lstmap(obj->centre, &copy_vector);
 
 	printf("Scaling copied list into view....\n");
-	scale_vectors(obj->scale);
+	scale_vectors(obj);
 
 	printf("Updating coor_range....\n");
 	update_coor_range(obj->scale, obj->coor_range);
@@ -60,15 +60,21 @@ int main(int argc, char **argv)
 	set_z_grid(obj);
 
 //	printf("printing scaled vector list..\n");	
-//	print_vectors(obj->scale);
+//	print_vectors(obj->scale, 1);
 
 	printf("checking object status..\n");
 	print_obj_stat(&obj);
 
 	//----------------------------------------------------STAGE 3--------------------------------------------------------------
 
-	printf("freeing object..\n");
-	free_object(&obj);
-	printf("exiting program...\n");
+	printf("drawing object in current img...\n");
+	draw_object(obj);
+
+	printf("setting input hooks and starting mlx_loop...");
+	mlx_hook(obj->win->win_ptr, 3, 1, &key_release, obj);
+	mlx_loop(obj->win->mlx_ptr);
+
+	//----------------------------------------------------STAGE 4--------------------------------------------------------------
+
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/04 10:29:01 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/04 10:33:01 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/04 10:29:01 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 11:43:07 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	void	center(t_vec *vector, char axis, float nb)
 	if (axis == 'x')
 		(vector->x) -= nb;
 	else if (axis == 'y')
-		(vector->y) -= nb;
+		(vector->y) += nb;
 	else if (axis == 'z')
 		(vector->z) -= nb;
 }

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 17:02:20 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/15 17:02:21 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/15 17:02:20 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 10:38:33 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ int		is_alt_nbr(char *str)
 	return (1);
 }
 
-char	*extract_nbr(char *str)
+int		extract_nbr(char *str)
 {
 	char	*dest;
 	char	*tmp;
 	size_t	len;
+	int		num;
 
 	len = 0;
 	tmp = str;
@@ -54,5 +55,7 @@ char	*extract_nbr(char *str)
 	}
 	dest = ft_strnew(len);
 	dest = ft_strncpy(dest, str, len);
-	return (dest);
+	num = ft_atoi(dest);
+	free(dest);
+	return (num);
 }

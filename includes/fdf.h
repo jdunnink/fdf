@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/19 12:32:01 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 17:31:33 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 11:11:01 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,20 @@ typedef	struct	s_minmax
 }				t_minmax;
 
 /*
+**	t_point struct is used to store and define points in 2D space.
+**	Primarily used in the linedrawing algorithm --> draw_line.c
+*/
+
+typedef	struct	s_point
+{
+	int			x;
+	int			y;
+	unsigned	color;
+}				t_point;
+
+/*
 **	t_vec struct is used to store and define a vector in 3D space,
-**	using x, y and z. Also includes a color variable.
+**	using x, y and z.
 */
 
 typedef	struct	s_vec
@@ -79,8 +91,7 @@ typedef struct	s_img
 /*
 **	t_win struct is used to store the variables related to a window,
 **	pointed to by win_ptr. A new window can be initiated using the
-**	init_win function. Dimensions are adjustable when creating a new
-**	window.
+**	init_win function.
 */
 
 typedef	struct	s_win
@@ -121,8 +132,8 @@ void			read_input(char *input_file, t_object **obj);
 int				init_object(t_object **obj);
 int				is_valid_nbr(char *str);
 int				is_alt_nbr(char *str);
-char			*extract_nbr(char *str);
-void			print_vectors(t_list *vectors);
+int				extract_nbr(char *str);
+void			print_vectors(t_list *vectors, int mode);
 void			free_object(t_object **target);
 void			free_vectors(t_list **vectors, int mode);
 void			ft_lstappend(t_list **list, void *content, size_t size);
@@ -133,10 +144,18 @@ void			init_win(int x, int y, t_win **win, char *name);
 void			init_img(t_img **img, t_win *window, int width, int height);
 t_list			*copy_vector(t_list *elem);
 void			center_vectors(t_list *vectors, t_minmax *coor_range);
-void			scale_vectors(t_list *vectors);
+void			scale_vectors(t_object *obj);
 void			set_x_grid(t_object *obj);
 void			set_z_grid(t_object *obj);
 void			update_coor_range(t_list *vectors, t_minmax *coor_range);
 t_list			*merge_sort_list(t_list *vectors);
+void			draw_line(t_img *img, t_vec start, t_vec end, t_point sign);
+void			draw_grid(t_img *img, t_list *grid, char type);
+void			draw_object(t_object *obj);
+void			img_pixel_put(t_img *img, int x, int y, int color);
+int				get_color(t_point curr, t_point start, t_point end, t_point d);
+int				key_release(int keycode, t_object *obj);
+void			add_interface(t_object *obj);
+
 
 #endif
