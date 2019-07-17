@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   set_x_grid.c                                       :+:    :+:            */
+/*   set_breaks.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/16 13:36:52 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:43:13 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/17 20:36:54 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 20:44:30 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	t_list	*refer(t_list *elem)
+void	set_breaks(t_list *grid, int type)
 {
-	t_list *new;
+	t_list	*iter;
+	t_vec	*curr;
+	t_vec	*next;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		error(7);
-	new->content = elem->content;
-	new->content_size = elem->content_size;
-	new->next = NULL;
-	return (new);
-}
-
-void	set_x_grid(t_object *obj)
-{
-	if (obj->total_vectors < 30000)	
-		obj->x_grid = ft_lstmap(obj->scale, &refer);
-	else
-		obj->x_grid = ft_lstref(obj->scale);
-	set_breaks(obj->x_grid, 'x');
+	iter = grid;
+	while (iter->next)
+	{
+		curr = iter->content;
+		next = ((t_vec *)(iter->next)->content);
+		if (type == 'x')
+		{
+			if (curr->z != next->z)
+				curr->br = 1; 
+		}
+		else if (type == 'z')
+		{
+			if (curr->x != next->x)
+				curr->br = 1;
+		}
+		iter = iter->next;
+	}
 }

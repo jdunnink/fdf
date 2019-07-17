@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   clear_object.c                                     :+:    :+:            */
+/*   free_object.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 17:20:24 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/15 17:20:24 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/15 17:20:24 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 20:02:32 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	free_win(t_win **target)
 	*target = NULL;
 }
 
-static	void	free_img(t_img **target, void *mlx_ptr)
+void	free_img(t_img **target, void *mlx_ptr)
 {
 	t_img	*img;
 
@@ -73,7 +73,21 @@ void	free_object(t_object **target)
 	obj->x_count = 0;
 	obj->z_count = 0;
 	obj->total_vectors = 0;
-
+	if (obj->left != NULL)
+	{
+		free(obj->left);
+		obj->left = NULL;
+	}
+	if (obj->right != NULL)
+	{
+		free(obj->right);
+		obj->right = NULL;
+	}
+	if (obj->rotation != NULL)
+	{
+		free(obj->rotation);
+		obj->rotation = NULL;
+	}
 	print_obj_stat(target);
 	free(obj);
 	*target = NULL;

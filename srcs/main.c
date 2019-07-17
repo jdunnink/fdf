@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:12:07 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 11:43:26 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 19:37:24 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int main(int argc, char **argv)
 	init_img((&(obj->img)), obj->win, obj->win->width, obj->win->height);
 
 	printf("Copying input vector list to centre...\n");
-	obj->centre = ft_lstmap(obj->input, &copy_vector);
+	if (obj->total_vectors < 30000)
+		obj->centre = ft_lstmap(obj->input, &copy_vector);
+	else
+		obj->centre = ft_lstcpy(obj->input);
 
 	printf("Centering copied vector list....\n");
 	center_vectors(obj->centre, obj->coor_range);
@@ -47,7 +50,10 @@ int main(int argc, char **argv)
 //	print_vectors(obj->centre, 1);
 
 	printf("Copying centre vector list to scale...\n");
-	obj->scale = ft_lstmap(obj->centre, &copy_vector);
+	if (obj->total_vectors < 30000)
+		obj->scale = ft_lstmap(obj->centre, &copy_vector);
+	else
+		obj->scale = ft_lstcpy(obj->centre);
 
 	printf("Scaling copied list into view....\n");
 	scale_vectors(obj);
@@ -70,8 +76,9 @@ int main(int argc, char **argv)
 	printf("drawing object in current img...\n");
 	draw_object(obj);
 
-	printf("setting input hooks and starting mlx_loop...");
+	printf("setting input hooks and starting mlx_loop...\n");
 	mlx_hook(obj->win->win_ptr, 3, 1, &key_release, obj);
+	mlx_hook(obj->win->win_ptr, 2, 1, &key_press, obj);
 	mlx_loop(obj->win->mlx_ptr);
 
 	//----------------------------------------------------STAGE 4--------------------------------------------------------------

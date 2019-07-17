@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/17 09:05:41 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 11:21:50 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 20:33:09 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	draw_grid(t_img *img, t_list *grid, char type)
 		next = (iter->next)->content;
 		if (type == 'z')
 		{
-			if (curr->x == next->x)
+			if (curr->br == 0)
 				if (check_line(*curr, *next, &lines, img) == 1)
 					draw_line(img, *curr, *next, sign);
 		}
 		else if (type == 'x')
 		{
-			if (curr->z == next->z)
+			if (curr->br == 0)
 				if (check_line(*curr, *next, &lines, img) == 1)
 					draw_line(img, *curr, *next, sign);
 		}

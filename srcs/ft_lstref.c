@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   set_x_grid.c                                       :+:    :+:            */
+/*   ft_lstref.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/16 13:36:52 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:43:13 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/17 18:51:42 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 18:52:57 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,21 @@ static	t_list	*refer(t_list *elem)
 	return (new);
 }
 
-void	set_x_grid(t_object *obj)
+t_list	*ft_lstref(t_list *src)
 {
-	if (obj->total_vectors < 30000)	
-		obj->x_grid = ft_lstmap(obj->scale, &refer);
-	else
-		obj->x_grid = ft_lstref(obj->scale);
-	set_breaks(obj->x_grid, 'x');
+	t_list	*dest;
+	t_list	*iter;
+	t_list	*next;
+
+	iter = refer(src);
+	dest = iter;
+	src = src->next;
+	while (src)
+	{
+		next = refer(src);
+		iter->next = next;
+		iter = next;
+		src = src->next;
+	}
+	return (dest);
 }

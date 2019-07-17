@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_object_stat.c                                :+:    :+:            */
+/*   print_obj_stat.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 18:55:29 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/15 18:55:29 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/15 18:55:29 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/17 19:25:45 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,30 @@ void	print_obj_stat(t_object **target)
 	printf("	x_count : %u\n", obj->x_count);
 	printf("	z_count : %u\n", obj->z_count);
 	printf("	total_vectors : %u\n", obj->total_vectors);
+	printf("	left matrix: %p\n", obj->left);
+	if (obj->left != NULL)
+	{
+		printf("		constant: %f\n", obj->left->constant);
+		printf("		cosine: %f\n", obj->left->cosine);
+		printf("		sine: %f\n", obj->left->sine);
+		printf("		neg_sine: %f\n", obj->left->neg_sine);
+	}
+	printf("	right matrix: %p\n", obj->right);
+	if (obj->right != NULL)
+	{
+		printf("		constant: %f\n", obj->left->constant);
+		printf("		cosine: %f\n", obj->left->cosine);
+		printf("		sine: %f\n", obj->left->sine);
+		printf("		neg_sine: %f\n", obj->left->neg_sine);
+	}
+	printf("	active matrix:	%p\n", obj->rotation);
+	if (obj->rotation != NULL)
+	{
+		printf("		constant: %f\n", obj->left->constant);
+		printf("		cosine: %f\n", obj->left->cosine);
+		printf("		sine: %f\n", obj->left->sine);
+		printf("		neg_sine: %f\n", obj->left->neg_sine);
+	}
 	ft_putchar('\n');
 }
 

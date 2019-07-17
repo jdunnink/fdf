@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 12:16:01 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 20:32:05 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	void	push_vector(int x, int y, int z, t_object *obj)
 {
 	t_vec *vector;
 
-	printf("	pushing vector: %i, %i, %i\n", x, y, z);
+//	printf("	pushing vector: %i, %i, %i\n", x, y, z);
 
 	vector = (t_vec*)malloc(sizeof(t_vec));
 
@@ -25,6 +25,7 @@ static	void	push_vector(int x, int y, int z, t_object *obj)
 	vector->x = (float)x;
 	vector->y = (float)y * -1;
 	vector->z = (float)z;
+	vector->br = 0;
 	vector->color = 0;
 	ft_lstappend(&(obj->input), vector, sizeof(t_vec));
 }

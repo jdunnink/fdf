@@ -6,7 +6,7 @@
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
-#    Updated: 2019/07/17 09:51:31 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/07/17 20:42:01 by jdunnink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,12 @@ SRC =	main.c				\
 		get_color.c			\
 		add_interface.c		\
 		key_release.c		\
+		ft_lstcpy.c			\
+		ft_lstref.c			\
+		set_vectors.c		\
+		key_press.c			\
+		rotate.c			\
+		set_breaks.c		\
 		
 OBJ = $(SRC:.c=.o)
 

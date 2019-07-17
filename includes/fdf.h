@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/19 12:32:01 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 11:11:01 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/17 20:42:12 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@
 # include <math.h>
 
 #include <stdio.h>
+
+/*
+**	t_matrix struct is used to store mathematical constants
+**	that are frequently used during matrix multiplication.
+*/
+
+typedef	struct	s_matrix
+{
+	float		constant;
+	float		cosine;
+	float		sine;
+	float		neg_sine;
+}				t_matrix;
 
 /*
 **	t_minmax struct is used to store the minimum and maximum
@@ -69,6 +82,7 @@ typedef	struct	s_vec
 	float		y;
 	float		z;
 	unsigned	color;
+	int			br;
 }				t_vec;
 
 /*
@@ -125,6 +139,9 @@ typedef	struct	s_object
 	unsigned	x_count;
 	unsigned	z_count;
 	unsigned	total_vectors;
+	t_matrix	*left;
+	t_matrix	*right;
+	t_matrix	*rotation;
 }				t_object;
 
 void			error(int error_code);
@@ -136,6 +153,7 @@ int				extract_nbr(char *str);
 void			print_vectors(t_list *vectors, int mode);
 void			free_object(t_object **target);
 void			free_vectors(t_list **vectors, int mode);
+void			free_img(t_img **target, void *mlx_ptr);
 void			ft_lstappend(t_list **list, void *content, size_t size);
 void			print_obj_stat(t_object **target);
 void			set_coor_range(t_object **target);
@@ -155,7 +173,12 @@ void			draw_object(t_object *obj);
 void			img_pixel_put(t_img *img, int x, int y, int color);
 int				get_color(t_point curr, t_point start, t_point end, t_point d);
 int				key_release(int keycode, t_object *obj);
+int				key_press(int keycode, t_object *obj);
 void			add_interface(t_object *obj);
-
+t_list			*ft_lstcpy(t_list *src);
+t_list			*ft_lstref(t_list *src);
+void			set_vectors(t_list *dest, t_list *src);
+void			rotate(t_object *obj, char type, int render);
+void			set_breaks(t_list *grid, int type);
 
 #endif
