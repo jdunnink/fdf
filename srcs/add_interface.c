@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/04 10:24:58 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 09:49:44 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:25:33 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	add_interface(t_object *obj)
 	mlx_string_put(mlx_ptr, win_ptr, 50, 70, TEXT_COLOR, "Rotate y: A, D");
 	mlx_string_put(mlx_ptr, win_ptr, 50, 90, TEXT_COLOR, "Rotate z: Q, E");
 	mlx_string_put(mlx_ptr, win_ptr, 50, 110, TEXT_COLOR, "Zoom In/Out: Z, X");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 130, TEXT_COLOR, "Isometric view: I");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 150, TEXT_COLOR, "Parallel view: P");
+	mlx_string_put(mlx_ptr, win_ptr, 50, 130, TEXT_COLOR, "Exit program: Esc");
+	mlx_string_put(mlx_ptr, win_ptr, 50, 150, TEXT_COLOR, "View from top: T");
+	mlx_string_put(mlx_ptr, win_ptr, 50, 170, TEXT_COLOR, "Reset: R");
 }

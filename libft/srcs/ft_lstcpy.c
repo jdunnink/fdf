@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   set_vectors.c                                      :+:    :+:            */
+/*   ft_lstcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/17 19:10:51 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:25:05 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/17 16:57:07 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/18 16:05:12 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	set_vectors(t_list *dest, t_list *src)
+t_list	*ft_lstcpy(t_list *src)
 {
-	t_vec	*curr_dest;
-	t_vec	*curr_src;
+	t_list	*dest;
+	t_list	*iter;
+	t_list	*next;
 
-	while (src && dest)
+	iter = ft_lstcpy_elem(src);
+	dest = iter;
+	src = src->next;
+	while (src)
 	{
-		curr_src = src->content;
-		curr_dest = dest->content;
-		curr_dest->x = curr_src->x;
-		curr_dest->y = curr_src->y;
-		curr_dest->z = curr_src->z;
+		next = ft_lstcpy_elem(src);
+		iter->next = next;
+		iter = next;
 		src = src->next;
-		dest = dest->next;
 	}
+	return (dest);
 }

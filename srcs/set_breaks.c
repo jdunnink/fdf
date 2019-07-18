@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/17 20:36:54 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:44:30 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:33:50 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	set_breaks(t_list *grid, int type)
 		if (type == 'x')
 		{
 			if (curr->z != next->z)
-				curr->br = 1; 
+				curr->x_br = 1;
 		}
 		else if (type == 'z')
 		{
 			if (curr->x != next->x)
-				curr->br = 1;
+				curr->z_br = 1;
 		}
 		iter = iter->next;
 	}

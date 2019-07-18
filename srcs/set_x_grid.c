@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/16 13:36:52 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:43:13 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:35:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static	t_list	*refer(t_list *elem)
 	return (new);
 }
 
-void	set_x_grid(t_object *obj)
+void			set_x_grid(t_object *obj)
 {
-	if (obj->total_vectors < 30000)	
+	if (obj->total_vectors < 30000)
 		obj->x_grid = ft_lstmap(obj->scale, &refer);
 	else
 		obj->x_grid = ft_lstref(obj->scale);

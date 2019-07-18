@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 17:20:24 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:02:32 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:32:40 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	free_win(t_win **target)
 	*target = NULL;
 }
 
-void	free_img(t_img **target, void *mlx_ptr)
+void			free_img(t_img **target, void *mlx_ptr)
 {
 	t_img	*img;
 
@@ -34,7 +34,7 @@ void	free_img(t_img **target, void *mlx_ptr)
 	*target = NULL;
 }
 
-void	free_minmax(t_minmax **target)
+void			free_minmax(t_minmax **target)
 {
 	t_minmax *coor_range;
 
@@ -49,7 +49,7 @@ void	free_minmax(t_minmax **target)
 	*target = NULL;
 }
 
-void	free_object(t_object **target)
+void			free_object(t_object **target)
 {
 	t_object *obj;
 

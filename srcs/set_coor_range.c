@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 19:33:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 17:42:58 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:34:39 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	get_y_range(t_object *obj)
 {
 	t_list	*iter;
 	t_vec	*curr;
-	float min;
-	float max;
+	float	min;
+	float	max;
 
 	iter = obj->input;
 	curr = iter->content;
@@ -36,7 +36,7 @@ static void	get_y_range(t_object *obj)
 	obj->coor_range->y_max = max;
 }
 
-void	set_coor_range(t_object **target)
+void		set_coor_range(t_object **target)
 {
 	t_object *obj;
 

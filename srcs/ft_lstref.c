@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/17 18:51:42 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 18:52:57 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:26:22 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	t_list	*refer(t_list *elem)
 	return (new);
 }
 
-t_list	*ft_lstref(t_list *src)
+t_list			*ft_lstref(t_list *src)
 {
 	t_list	*dest;
 	t_list	*iter;

@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/27 18:03:32 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:03:40 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:25:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,11 @@ int					key_press(int keycode, t_object *obj)
 	if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2 ||
 		keycode == 12 || keycode == 14)
 		handle_rotation(&change, keycode, obj);
-//	else if (keycode == 6 || keycode == 7)
-//	{
-//		zoom(object, keycode, 0.95, 1.05);
-//		change = 1;
-//	}
-//	else if (keycode == 34 || keycode == 35)
-//	{
-//		change = 1;
-//		change_view(object, keycode);
-//	}
+	else if (keycode == 6 || keycode == 7)
+	{
+		zoom(obj, keycode, 0.95, 1.05);
+		change = 1;
+	}
 	if (change == 1)
 		add_interface(obj);
 	return (0);

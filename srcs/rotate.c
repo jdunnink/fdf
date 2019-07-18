@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/27 18:34:51 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:35:33 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:25:09 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ static	void	rotate_x(t_object *object)
 	while (iter)
 	{
 		vector = iter->content;
-		tmp = (vector->x * 0) + (vector->y * cosine) +
-				(vector->z * object->rotation->sine);
-		vector->z = (vector->x * 0) + (vector->y * neg_sine) +
-					(vector->z * cosine);
+		tmp = (vector->y * cosine) + (vector->z * object->rotation->sine);
+		vector->z = (vector->y * neg_sine) + (vector->z * cosine);
 		vector->y = tmp;
 		iter = iter->next;
 	}
@@ -56,9 +54,8 @@ static	void	rotate_y(t_object *object)
 	while (iter)
 	{
 		vector = iter->content;
-		tmp = (vector->x * cosine) + (vector->y * 0) + (vector->z * neg_sine);
-		vector->z = (vector->x * object->rotation->sine) + (vector->y * 0) +
-					(vector->z * cosine);
+		tmp = (vector->x * cosine) + (vector->z * neg_sine);
+		vector->z = (vector->x * object->rotation->sine) + (vector->z * cosine);
 		vector->x = tmp;
 		iter = iter->next;
 	}
@@ -78,10 +75,8 @@ static	void	rotate_z(t_object *object)
 	while (iter)
 	{
 		vector = iter->content;
-		tmp = (vector->x * cosine) + (vector->y * object->rotation->sine) +
-				(vector->z * 0);
-		vector->y = (vector->x * neg_sine) + (vector->y * cosine) +
-					(vector->z * 0);
+		tmp = (vector->x * cosine) + (vector->y * object->rotation->sine);
+		vector->y = (vector->x * neg_sine) + (vector->y * cosine);
 		vector->x = tmp;
 		iter = iter->next;
 	}

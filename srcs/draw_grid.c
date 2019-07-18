@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/17 09:05:41 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:33:09 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:30:55 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ static	int	check_line(t_vec start, t_vec end, unsigned *lines, t_img *img)
 		return (0);
 	if (start.x == end.x && start.y == end.y)
 		return (0);
-//	printf("drawing line between %.f, %.f and %.f, %.f\n", start.x, start.y, end.x, end.y);
 	(*lines)++;
 	return (1);
 }
 
-void	draw_grid(t_img *img, t_list *grid, char type)
+void		draw_grid(t_img *img, t_list *grid, char type)
 {
-	t_list	*iter;
-	t_vec	*curr;
-	t_vec	*next;
-	t_point	sign;
-	unsigned int lines;
+	t_list		*iter;
+	t_vec		*curr;
+	t_vec		*next;
+	t_point		sign;
+	unsigned	lines;
 
 	iter = grid;
 	lines = 0;
@@ -45,17 +44,16 @@ void	draw_grid(t_img *img, t_list *grid, char type)
 		next = (iter->next)->content;
 		if (type == 'z')
 		{
-			if (curr->br == 0)
+			if (curr->z_br == 0)
 				if (check_line(*curr, *next, &lines, img) == 1)
 					draw_line(img, *curr, *next, sign);
 		}
 		else if (type == 'x')
 		{
-			if (curr->br == 0)
+			if (curr->x_br == 0)
 				if (check_line(*curr, *next, &lines, img) == 1)
 					draw_line(img, *curr, *next, sign);
 		}
 		iter = iter->next;
 	}
-	printf(" total lines drawn: %u\n", lines);
 }

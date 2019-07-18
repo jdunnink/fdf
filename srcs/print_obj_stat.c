@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 18:55:29 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 19:25:45 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:24:25 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ void	print_obj_stat(t_object **target)
 	}
 	ft_putchar('\n');
 }
-

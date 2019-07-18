@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/16 13:55:49 by jdunnink      #+#    #+#                 */
-/*   Updated: 2019/07/16 13:55:49 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/16 13:55:49 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/18 18:35:45 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	get_x_range(t_list *vectors, t_minmax *coor_range)
 {
 	t_list	*iter;
 	t_vec	*curr;
-	float min;
-	float max;
+	float	min;
+	float	max;
 
 	iter = vectors;
 	curr = iter->content;
@@ -40,8 +40,8 @@ static void	get_y_range(t_list *vectors, t_minmax *coor_range)
 {
 	t_list	*iter;
 	t_vec	*curr;
-	float min;
-	float max;
+	float	min;
+	float	max;
 
 	iter = vectors;
 	curr = iter->content;
@@ -64,8 +64,8 @@ static void	get_z_range(t_list *vectors, t_minmax *coor_range)
 {
 	t_list	*iter;
 	t_vec	*curr;
-	float min;
-	float max;
+	float	min;
+	float	max;
 
 	iter = vectors;
 	curr = iter->content;
@@ -84,7 +84,7 @@ static void	get_z_range(t_list *vectors, t_minmax *coor_range)
 	coor_range->z_max = max;
 }
 
-void	update_coor_range(t_list *vectors, t_minmax *coor_range)
+void		update_coor_range(t_list *vectors, t_minmax *coor_range)
 {
 	get_x_range(vectors, coor_range);
 	get_y_range(vectors, coor_range);

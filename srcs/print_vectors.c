@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 17:15:57 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:35:18 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:32:57 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ static	void	print(t_vec *curr)
 	ft_putstr(" ,");
 	ft_putnbr((int)curr->z);
 	ft_putstr(" ,");
-	ft_putnbr((int)curr->br);
+	ft_putnbr((int)curr->x_br);
+	ft_putstr(" ,");
+	ft_putnbr((int)curr->z_br);
 	ft_putchar('\n');
 }
 
-void	print_vectors(t_list *vectors, int mode)
+void			print_vectors(t_list *vectors, int mode)
 {
-	t_list	*iter;
-	t_vec	*curr;
-	unsigned int i;
+	t_list		*iter;
+	t_vec		*curr;
+	unsigned	i;
 
 	i = 0;
 	iter = vectors;

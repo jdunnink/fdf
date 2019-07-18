@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/19 12:32:01 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 20:42:12 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 17:35:12 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ typedef	struct	s_vec
 	float		y;
 	float		z;
 	unsigned	color;
-	int			br;
+	int			x_br;
+	int			z_br;
 }				t_vec;
 
 /*
@@ -154,13 +155,11 @@ void			print_vectors(t_list *vectors, int mode);
 void			free_object(t_object **target);
 void			free_vectors(t_list **vectors, int mode);
 void			free_img(t_img **target, void *mlx_ptr);
-void			ft_lstappend(t_list **list, void *content, size_t size);
 void			print_obj_stat(t_object **target);
 void			set_coor_range(t_object **target);
 void			add_colors(t_list *vectors, t_minmax *coor_range);
 void			init_win(int x, int y, t_win **win, char *name);
 void			init_img(t_img **img, t_win *window, int width, int height);
-t_list			*copy_vector(t_list *elem);
 void			center_vectors(t_list *vectors, t_minmax *coor_range);
 void			scale_vectors(t_object *obj);
 void			set_x_grid(t_object *obj);
@@ -175,10 +174,14 @@ int				get_color(t_point curr, t_point start, t_point end, t_point d);
 int				key_release(int keycode, t_object *obj);
 int				key_press(int keycode, t_object *obj);
 void			add_interface(t_object *obj);
-t_list			*ft_lstcpy(t_list *src);
 t_list			*ft_lstref(t_list *src);
 void			set_vectors(t_list *dest, t_list *src);
 void			rotate(t_object *obj, char type, int render);
 void			set_breaks(t_list *grid, int type);
+void			alt_get_vectors(char *input_file, t_object *obj);
+void			zoom(t_object *obj, int keycode, float z_out, float z_in);
+void			view_top(t_object *obj);
+t_matrix		*get_matrix(float angle);
+void			reset(t_object *obj);
 
 #endif

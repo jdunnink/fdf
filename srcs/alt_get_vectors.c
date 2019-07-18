@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   read_input.c                                       :+:    :+:            */
+/*   alt_get_vectors.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:38:50 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:32:27 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,38 @@ static	void	process_line(char *l, unsigned l_nb, t_object *obj)
 {
 	char			**nums;
 	unsigned int	i;
+	unsigned int	x;
 	t_vec			*curr;
 
 	nums = ft_strsplit(l, ' ');
 	i = 0;
+	x = 0;
 	while (nums[i] != NULL)
 	{
-		if (is_valid_nbr(nums[i]) == 1)
-			push_vector(i, ft_atoi(nums[i]), l_nb, obj);
-		else if (is_alt_nbr(nums[i]) == 1)
-			push_vector(i, extract_nbr(nums[i]), l_nb, obj);
-		else
-			error(4);
+		if (i % 2 != 0)
+		{
+			if (is_valid_nbr(nums[i]) == 1)
+				push_vector(x, ft_atoi(nums[i]), l_nb, obj);
+			else if (is_alt_nbr(nums[i]) == 1)
+				push_vector(x, extract_nbr(nums[i]), l_nb, obj);
+			else
+				error(4);
+			x++;
+		}
 		free(nums[i]);
 		i++;
 	}
 	if (obj->x_count == 0)
-		obj->x_count = i;
+		obj->x_count = x;
 	free(nums);
 }
 
-static	int		get_vectors(char *input_file, t_object *obj)
+void			alt_get_vectors(char *input_file, t_object *obj)
 {
 	int				fd;
 	char			*line;
 	unsigned int	i;
 	int				stat;
-	int				first_line;
 
 	fd = open(input_file, 0);
 	if (fd == -1)
@@ -66,42 +71,20 @@ static	int		get_vectors(char *input_file, t_object *obj)
 	i = 0;
 	stat = 1;
 	line = NULL;
-	first_line = 0;
 	while (stat != -1 && stat != 0)
 	{
 		stat = get_next_line(fd, &line);
-		if (first_line == 0)
-		{
-			first_line = 1;
-			if (ft_strlen(line) > 3000)
-			{
-				close(fd);
-				free(line);
-				line = NULL;
-				return (0);
-			}
-		}
 		if (line)
 		{
-			process_line(line, i, obj);
+			if (i % 2 != 0)
+			{
+				process_line(line, obj->z_count, obj);
+				(obj->z_count)++;
+			}
 			free(line);
 			line = NULL;
 		}
 		i++;
 	}
-	if (obj->z_count == 0)
-		obj->z_count = i - 1;
 	close(fd);
-	return (1);
-}
-
-void			read_input(char *input_file, t_object **obj)
-{
-	if (init_object(obj) == 0)
-		error(2);
-	if (get_vectors(input_file, *obj) == 0)
-		alt_get_vectors(input_file, *obj);
-	(*obj)->total_vectors = (*obj)->x_count * (*obj)->z_count;
-	set_coor_range(obj);
-	add_colors((*obj)->input, (*obj)->coor_range);
 }

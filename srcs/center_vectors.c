@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/04 10:29:01 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 11:43:07 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:28:42 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,8 @@ static	void	center_x(t_list *vectors, float x_min, float x_max)
 	float	offset;
 
 	offset = (x_max - x_min) / 2;
-	printf("	center x offset: %.2f\n", offset);
 	if (offset == x_max && offset == (x_min * -1))
-	{
-		printf("		no centering required!\n");
 		return ;
-	}
 	iter = vectors;
 	while (iter)
 	{
@@ -55,14 +51,10 @@ static	void	center_y(t_list *vectors, float y_min, float y_max)
 	t_list	*iter;
 	t_vec	*curr;
 	float	offset;
-	
+
 	offset = (y_max - y_min) / 2;
-	printf("	center y offset: %.2f\n", offset);
 	if (offset == y_max && offset == (y_min * -1))
-	{
-		printf("		no centering required!\n");
 		return ;
-	}
 	iter = vectors;
 	while (iter)
 	{
@@ -79,12 +71,8 @@ static	void	center_z(t_list *vectors, float z_min, float z_max)
 	float	offset;
 
 	offset = (z_max - z_min) / 2;
-	printf("	center z offset: %.2f\n", offset);
 	if (offset == z_max && offset == (z_min * -1))
-	{
-		printf("		no centering required!\n");
 		return ;
-	}
 	iter = vectors;
 	while (iter)
 	{

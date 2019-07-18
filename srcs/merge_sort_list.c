@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/16 16:35:29 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/16 20:51:57 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:37:48 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@ static	size_t	get_listlen(t_list *vectors)
 	return (i);
 }
 
-static	void	list_split(t_list **one, t_list **two, size_t list_len, t_list **vectors)
+static	void	list_split(t_list **one, t_list **two, size_t len, t_list **v)
 {
 	unsigned int	i;
 	t_list			*trail;
 
 	i = 0;
-	*one = *vectors;
-	while (i < list_len / 2)
+	*one = *v;
+	while (i < len / 2)
 	{
-		trail = *vectors;
-		*vectors = (*vectors)->next;
+		trail = *v;
+		*v = (*v)->next;
 		i++;
 	}
 	trail->next = NULL;
-	*two = *vectors;
+	*two = *v;
 }
 
 static t_list	*push(t_list *list, t_list **new, unsigned *i)
@@ -68,12 +68,12 @@ static t_list	*push(t_list *list, t_list **new, unsigned *i)
 	return (dest);
 }
 
-static	t_list	*merge(t_list *one, t_list *two, t_vec *curr_one, t_vec *curr_two)
+static	t_list	*merge(t_list *one, t_list *two, t_vec *v_one, t_vec *v_two)
 {
-	t_list	*dest;
-	t_list	*iter;
-	size_t dest_len;
-	unsigned int i;
+	t_list		*dest;
+	t_list		*iter;
+	size_t		dest_len;
+	unsigned	i;
 
 	i = 0;
 	dest = NULL;
@@ -86,24 +86,24 @@ static	t_list	*merge(t_list *one, t_list *two, t_vec *curr_one, t_vec *curr_two)
 			dest = push(dest, &one, &i);
 		else
 		{
-			curr_two = two->content;
-			curr_one = one->content;
-			if (curr_one->x < curr_two->x)
+			v_two = two->content;
+			v_one = one->content;
+			if (v_one->x < v_two->x)
 				dest = push(dest, &one, &i);
 			else
 				dest = push(dest, &two, &i);
 		}
 	}
-	return (dest);		
+	return (dest);
 }
 
-t_list *merge_sort_list(t_list *vectors)
+t_list			*merge_sort_list(t_list *vectors)
 {
 	size_t	list_len;
 	t_list	*one;
 	t_list	*two;
-	t_vec	*curr_one;
-	t_vec	*curr_two;
+	t_vec	*v_one;
+	t_vec	*v_two;
 
 	one = NULL;
 	two = NULL;
@@ -111,5 +111,5 @@ t_list *merge_sort_list(t_list *vectors)
 		return (vectors);
 	list_len = get_listlen(vectors);
 	list_split(&one, &two, list_len, &vectors);
-	return (merge(merge_sort_list(one), merge_sort_list(two), curr_one, curr_two));
+	return (merge(merge_sort_list(one), merge_sort_list(two), v_one, v_two));
 }

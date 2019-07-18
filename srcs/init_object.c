@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 16:19:09 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/17 19:37:44 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/18 18:26:35 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_matrix	*get_matrix(float angle)
 	return (trix);
 }
 
-int		init_object(t_object **obj)
+int			init_object(t_object **obj)
 {
 	*obj = (t_object*)malloc(sizeof(t_object));
 	if (!(*obj))
@@ -44,4 +44,4 @@ int		init_object(t_object **obj)
 	(*obj)->right = get_matrix(3.00);
 	(*obj)->rotation = NULL;
 	return (1);
-}	
+}
