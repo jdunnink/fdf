@@ -6,7 +6,7 @@
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
-#    Updated: 2019/07/18 17:35:04 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/07/19 12:44:45 by jdunnink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,8 @@ SRC =	main.c				\
 		init_win.c			\
 		init_img.c			\
 		input_checks.c		\
-		print_vectors.c		\
 		free_object.c		\
 		free_vectors.c		\
-		print_obj_stat.c	\
 		set_coor_range.c	\
 		update_coor_range.c	\
 		add_colors.c		\
@@ -36,15 +34,18 @@ SRC =	main.c				\
 		get_color.c			\
 		add_interface.c		\
 		key_release.c		\
-		ft_lstref.c			\
 		set_vectors.c		\
 		key_press.c			\
 		rotate.c			\
 		set_breaks.c		\
 		alt_get_vectors.c	\
 		zoom.c				\
-		view_top.c			\
 		reset.c				\
+		get_vectors.c		\
+		push_vector.c		\
+		change_view.c		\
+		dump_image.c		\
+		check_line.c		\
 		
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 17:20:24 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:32:40 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 10:41:37 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ void			free_minmax(t_minmax **target)
 	*target = NULL;
 }
 
+static	void	free_all_vectors(t_object *obj)
+{
+	if (obj->input != NULL)
+		free_vectors(&(obj->input), 1);
+	if (obj->centre != NULL)
+		free_vectors(&(obj->centre), 1);
+	if (obj->scale != NULL)
+		free_vectors(&(obj->scale), 1);
+	if (obj->z_grid != NULL)
+		free_vectors(&(obj->z_grid), 2);
+	if (obj->x_grid != NULL)
+		free_vectors(&(obj->x_grid), 2);
+}
+
 void			free_object(t_object **target)
 {
 	t_object *obj;
@@ -58,38 +72,15 @@ void			free_object(t_object **target)
 		free_img(&(obj->img), obj->win->mlx_ptr);
 	if (obj->win != NULL)
 		free_win(&(obj->win));
-	if (obj->input != NULL)
-		free_vectors(&(obj->input), 1);
-	if (obj->centre != NULL)
-		free_vectors(&(obj->centre), 1);
-	if (obj->scale != NULL)
-		free_vectors(&(obj->scale), 1);
 	if (obj->coor_range != NULL)
 		free_minmax(&(obj->coor_range));
-	if (obj->z_grid != NULL)
-		free_vectors(&(obj->z_grid), 2);
-	if (obj->x_grid != NULL)
-		free_vectors(&(obj->x_grid), 2);
-	obj->x_count = 0;
-	obj->z_count = 0;
-	obj->total_vectors = 0;
+	free_all_vectors(*target);
 	if (obj->left != NULL)
-	{
 		free(obj->left);
-		obj->left = NULL;
-	}
 	if (obj->right != NULL)
-	{
 		free(obj->right);
-		obj->right = NULL;
-	}
 	if (obj->rotation != NULL)
-	{
 		free(obj->rotation);
-		obj->rotation = NULL;
-	}
-	print_obj_stat(target);
 	free(obj);
 	*target = NULL;
-	print_obj_stat(target);
 }

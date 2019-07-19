@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/19 12:32:01 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 17:35:12 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 12:46:17 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include "../libft/includes/get_next_line.h"
 # include "../minilibx_macos/mlx.h"
 # include <math.h>
-
-#include <stdio.h>
 
 /*
 **	t_matrix struct is used to store mathematical constants
@@ -145,43 +143,78 @@ typedef	struct	s_object
 	t_matrix	*rotation;
 }				t_object;
 
-void			error(int error_code);
-void			read_input(char *input_file, t_object **obj);
-int				init_object(t_object **obj);
-int				is_valid_nbr(char *str);
-int				is_alt_nbr(char *str);
-int				extract_nbr(char *str);
-void			print_vectors(t_list *vectors, int mode);
-void			free_object(t_object **target);
-void			free_vectors(t_list **vectors, int mode);
-void			free_img(t_img **target, void *mlx_ptr);
-void			print_obj_stat(t_object **target);
-void			set_coor_range(t_object **target);
-void			add_colors(t_list *vectors, t_minmax *coor_range);
-void			init_win(int x, int y, t_win **win, char *name);
+/*
+**	INITIALIZATION
+*/
+
 void			init_img(t_img **img, t_win *window, int width, int height);
+void			init_win(int x, int y, t_win **win, char *name);
+int				init_object(t_object **obj);
+
+/*
+**	INPUT READING
+*/
+
+void			push_vector(int x, int y, int z, t_object *obj);
+void			alt_get_vectors(char *input_file, t_object *obj);
+int				get_vectors(char *input_file, t_object *obj);
+void			read_input(char *input_file, t_object **obj);
+
+/*
+**	DATA PROCESSING
+*/
+
+void			set_coor_range(t_object **target);
+void			update_coor_range(t_list *vectors, t_minmax *coor_range);
+void			add_colors(t_list *vectors, t_minmax *coor_range);
 void			center_vectors(t_list *vectors, t_minmax *coor_range);
 void			scale_vectors(t_object *obj);
 void			set_x_grid(t_object *obj);
 void			set_z_grid(t_object *obj);
-void			update_coor_range(t_list *vectors, t_minmax *coor_range);
-t_list			*merge_sort_list(t_list *vectors);
+void			set_vectors(t_list *dest, t_list *src);
+void			set_breaks(t_list *grid, int type);
+
+/*
+**	RENDERING
+*/
+
+int				get_color(t_point curr, t_point start, t_point end, t_point d);
+void			img_pixel_put(t_img *img, int x, int y, int color);
 void			draw_line(t_img *img, t_vec start, t_vec end, t_point sign);
 void			draw_grid(t_img *img, t_list *grid, char type);
 void			draw_object(t_object *obj);
-void			img_pixel_put(t_img *img, int x, int y, int color);
-int				get_color(t_point curr, t_point start, t_point end, t_point d);
+void			add_interface(t_object *obj);
+void			dump_image(t_object *obj);
+
+/*
+**	USER INPUT HOOKS
+*/
+
 int				key_release(int keycode, t_object *obj);
 int				key_press(int keycode, t_object *obj);
-void			add_interface(t_object *obj);
-t_list			*ft_lstref(t_list *src);
-void			set_vectors(t_list *dest, t_list *src);
+void			change_view(t_object *obj, float x, float y, float z);
 void			rotate(t_object *obj, char type, int render);
-void			set_breaks(t_list *grid, int type);
-void			alt_get_vectors(char *input_file, t_object *obj);
 void			zoom(t_object *obj, int keycode, float z_out, float z_in);
-void			view_top(t_object *obj);
-t_matrix		*get_matrix(float angle);
 void			reset(t_object *obj);
+
+/*
+**	GARBAGE COLLECTION
+*/
+
+void			free_img(t_img **target, void *mlx_ptr);
+void			free_vectors(t_list **vectors, int mode);
+void			free_object(t_object **target);
+
+/*
+**	UTILITY
+*/
+
+void			error(int error_code);
+int				is_valid_nbr(char *str);
+int				is_alt_nbr(char *str);
+int				extract_nbr(char *str);
+t_list			*merge_sort_list(t_list *vectors);
+t_matrix		*get_matrix(float angle);
+int				check_line(t_img *img, t_vec start, t_vec end);
 
 #endif

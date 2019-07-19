@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/12 12:46:29 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:25:30 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 12:29:02 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	draw_line(t_img *img, t_vec start, t_vec end, t_point sign)
 	t_point ending;
 	int		error[2];
 
+	if (check_line(img, start, end) == 0)
+		return ;
 	init_points(&begin, &ending, start, end);
 	init_delta(&delta, start, end);
 	init_sign(&sign, start, end);

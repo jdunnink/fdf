@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/27 18:03:32 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:25:15 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 11:58:38 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	key_release(int keycode, t_object *obj)
 		exit(0);
 	}
 	else if (keycode == 17)
-		view_top(obj);
+		change_view(obj, 90, 0, 0);
 	else if (keycode == 15)
 		reset(obj);
+	else if (keycode == 34)
+		change_view(obj, 45, 45, -28.57);
 	return (0);
 }

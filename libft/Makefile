@@ -6,7 +6,7 @@
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
-#    Updated: 2019/07/18 16:05:43 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/07/19 09:25:40 by jdunnink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRC =	ft_swap.c			\
 		ft_lstappend.c		\
 		ft_lstcpy_elem.c	\
 		ft_lstcpy.c			\
+		ft_lstref.c			\
 
 OBJ = $(SRC:.c=.o)
 

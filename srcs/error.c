@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 15:51:28 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 18:38:27 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 09:37:52 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	error(int error_code)
 	else if (error_code == 6)
 		ft_putendl("Could not allocate memory for new coor_range struct.");
 	else if (error_code == 7)
-		ft_putendl("Could not allocate new node, while setting grid_ptrs.\n");
+		ft_putendl("Could not read input_file.");
 	exit(0);
 }

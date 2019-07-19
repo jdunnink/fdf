@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   read_input.c                                       :+:    :+:            */
+/*   check_line.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/19 09:55:15 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/12 12:46:29 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/19 12:29:20 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			read_input(char *input_file, t_object **obj)
+int	check_line(t_img *img, t_vec start, t_vec end)
 {
-	if (init_object(obj) == 0)
-		error(2);
-	if (get_vectors(input_file, *obj) == 0)
-		alt_get_vectors(input_file, *obj);
-	(*obj)->total_vectors = (*obj)->x_count * (*obj)->z_count;
-	set_coor_range(obj);
-	add_colors((*obj)->input, (*obj)->coor_range);
+	if (start.x < (img->width / 4) * -1 || end.x < (img->width / 4) * -1)
+		return (0);
+	if (start.y < (img->height / 4) * -1 || end.y < (img->height / 4) * -1)
+		return (0);
+	if (start.x > img->width * 1.25 || end.x > img->width * 1.25)
+		return (0);
+	if (start.y > img->height * 1.25 || end.y > img->height * 1.25)
+		return (0);
+	return (1);
 }

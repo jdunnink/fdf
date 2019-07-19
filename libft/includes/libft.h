@@ -6,7 +6,7 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 10:03:12 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 16:05:34 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 09:25:02 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstappend(t_list **list, void *content, size_t size);
 t_list			*ft_lstcpy_elem(t_list *elem);
 t_list			*ft_lstcpy(t_list *src);
+t_list			*ft_lstref(t_list *src);
 
 /*
 **	type/format conversion

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   read_input.c                                       :+:    :+:            */
+/*   dump_image.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/15 15:45:20 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/19 09:55:15 by jdunnink      ########   odam.nl         */
+/*   Created: 2019/07/19 12:06:26 by jdunnink       #+#    #+#                */
+/*   Updated: 2019/07/19 12:26:08 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			read_input(char *input_file, t_object **obj)
+void	dump_image(t_object *obj)
 {
-	if (init_object(obj) == 0)
-		error(2);
-	if (get_vectors(input_file, *obj) == 0)
-		alt_get_vectors(input_file, *obj);
-	(*obj)->total_vectors = (*obj)->x_count * (*obj)->z_count;
-	set_coor_range(obj);
-	add_colors((*obj)->input, (*obj)->coor_range);
+	set_vectors(obj->scale, obj->centre);
+	init_img(&(obj->img), obj->win, obj->win->width, obj->win->height);
+	scale_vectors(obj);
+	draw_object(obj);
+	mlx_put_image_to_window(obj->win->mlx_ptr,
+							obj->win->win_ptr,
+							obj->img->img_ptr, 0, 0);
+	add_interface(obj);
 }

@@ -6,13 +6,13 @@
 /*   By: jdunnink <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/15 21:12:37 by jdunnink       #+#    #+#                */
-/*   Updated: 2019/07/18 16:04:19 by jdunnink      ########   odam.nl         */
+/*   Updated: 2019/07/19 12:49:15 by jdunnink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstcpy_elem(t_list *elem)
+t_list	*ft_lstcpy_elem(t_list *elem)
 {
 	t_list *new;
 
