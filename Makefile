@@ -6,7 +6,7 @@
 #    By: jdunnink <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/20 09:33:47 by jdunnink       #+#    #+#                 #
-#    Updated: 2019/07/19 12:44:45 by jdunnink      ########   odam.nl          #
+#    Updated: 2019/11/23 12:36:04 by jdunnink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC =	main.c				\
 		change_view.c		\
 		dump_image.c		\
 		check_line.c		\
-		
+
 OBJ = $(SRC:.c=.o)
 
 SRCDIR = srcs
@@ -63,7 +63,7 @@ CC = gcc
 
 NAME = fdf
 
-CFLAGS = 
+CFLAGS =
 
 LIBS = -L minilibx_macos/ -lmlx -framework OpenGL -framework Appkit -L libft/ -lft
 
